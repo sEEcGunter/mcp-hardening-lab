@@ -1,0 +1,24 @@
+[project]
+name = "mcp-hardening-lab"
+version = "0.1.0"
+description = "Local educational lab for two published MCP security bug classes"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "sEEcGunter" }]
+# FastMCP lives in mcp 1.x. mcp 2 renamed it to MCPServer; pin the 1.x line
+# so this lab can use the API the brief asks for.
+dependencies = ["mcp>=1.20,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
