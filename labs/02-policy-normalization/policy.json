@@ -1,0 +1,21 @@
+{
+  "note": "CLI-style names, the spelling an operator copies from the AWS CLI docs. Compared with API names such as CreateSAMLProvider. This file is the operator policy for the simulated cloud; it does not call AWS.",
+  "deny": [
+    "iam create-saml-provider",
+    "iam upload-ssh-public-key",
+    "iam add-client-id-to-open-id-connect-provider",
+    "rds delete-db-cluster",
+    "rds delete-db-instance",
+    "ec2 terminate-instances"
+  ],
+  "elicit": [
+    "iam deactivate-mfa-device",
+    "iam create-virtual-mfa-device"
+  ],
+  "allow": [
+    "ec2 describe-instances",
+    "rds describe-db-instances",
+    "s3 list-buckets",
+    "sts get-caller-identity"
+  ]
+}
