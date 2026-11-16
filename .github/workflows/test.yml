@@ -1,0 +1,33 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    name: pytest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install ".[dev]"
+      - name: Pytest
+        run: pytest
+      - name: Lab demos
+        run: |
+          python labs/01-git-config-exec/make_fixture.py --demo
+          python labs/02-policy-normalization/fixed.py --demo
+
+  docker:
+    name: docker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t mcp-hardening-lab .
+      - name: Run image
+        run: docker run --rm mcp-hardening-lab
